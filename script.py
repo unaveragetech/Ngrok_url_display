@@ -16,151 +16,98 @@ def update_index():
         urls = f.readlines()
 
     # Ensure there are URLs in the file
-    if len(urls) < 2:
-        print(f"Insufficient URLs found in {input_file}.")
+    if not urls:
+        print(f"No URLs found in {input_file}.")
         return
 
     # Get the last and second-last URLs
     latest_url = urls[-1].strip()
-    previous_url = urls[-2].strip()
+    previous_url = urls[-2].strip() if len(urls) > 1 else "None"
 
     # Get the last update time
     last_update = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
-    # Create the new HTML content
-    html_content = f"""
-<html><head><base href="/" />
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Stylish Auto-Generated UI</title>
-<style>
-  @keyframes gradientBG {{
-    0% {{background-position: 0% 50%;}}
-    50% {{background-position: 100% 50%;}}
-    100% {{background-position: 0% 50%;}}
-  }}
-
-  @keyframes float {{
-    0% {{transform: translateY(0px);}}
-    50% {{transform: translateY(-20px);}}
-    100% {{transform: translateY(0px);}}
-  }}
-
-  @keyframes pulse {{
-    0% {{transform: scale(1);}}
-    50% {{transform: scale(1.05);}}
-    100% {{transform: scale(1);}}
-  }}
-
-  body {{
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-    background-size: 400% 400%;
-    animation: gradientBG 15s ease infinite;
-  }}
-
-  .container {{
-    background: rgba(255, 255, 255, 0.95);
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-    backdrop-filter: blur(4px);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    width: 80%;
-    max-width: 600px;
-    text-align: center;
-    animation: float 6s ease-in-out infinite;
-  }}
-
-  h1 {{
-    color: #2c3e50;
-    font-size: 2.5em;
-    margin-bottom: 30px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    background: linear-gradient(45deg, #12c2e9, #c471ed, #f64f59);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }}
-
-  .button-wrapper {{
-    margin: 20px 0;
-  }}
-
-  button {{
-    padding: 15px 30px;
-    font-size: 18px;
-    color: white;
-    background: linear-gradient(45deg, #12c2e9, #c471ed, #f64f59);
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    animation: pulse 2s infinite;
-  }}
-
-  button:hover {{
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-  }}
-
-  .info {{
-    margin-top: 30px;
-    padding: 20px;
-    border-top: 2px solid rgba(0, 0, 0, 0.1);
-  }}
-
-  .info p {{
-    margin: 10px 0;
-    color: #666;
-    font-size: 16px;
-  }}
-
-  .info a {{
-    color: #c471ed;
-    text-decoration: none;
-    transition: color 0.3s ease;
-  }}
-
-  .info a:hover {{
-    color: #f64f59;
-    text-decoration: underline;
-  }}
-
-  @media (max-width: 768px) {{
-    .container {{
-      width: 90%;
-      padding: 20px;
-    }}
-    
-    h1 {{
-      font-size: 1.8em;
-    }}
-  }}
-</style>
+    # Create the HTML content
+    html_content = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latest Auto-Generated UI</title>
+    <style>
+        body {{
+            font-family: Arial, sans-serif;
+            background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1);
+            background-size: 400% 400%;
+            animation: gradientBG 10s ease infinite;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #333;
+        }}
+        @keyframes gradientBG {{
+            0% {{background-position: 0% 50%;}}
+            50% {{background-position: 100% 50%;}}
+            100% {{background-position: 0% 50%;}}
+        }}
+        .container {{
+            text-align: center;
+            background: #ffffff;
+            padding: 30px 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            width: 80%;
+        }}
+        h1 {{
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }}
+        button {{
+            padding: 12px 24px;
+            font-size: 16px;
+            color: #ffffff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }}
+        button:hover {{
+            background-color: #0056b3;
+        }}
+        .info {{
+            margin-top: 20px;
+            font-size: 14px;
+            color: #555;
+        }}
+        .info a {{
+            color: #007bff;
+            text-decoration: none;
+        }}
+        .info a:hover {{
+            text-decoration: underline;
+        }}
+    </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Access the Latest Auto-Generated UI</h1>
-    <div class="button-wrapper">
-      <a href="{latest_url}" target="_blank" style="text-decoration: none;">
-        <button>Visit Latest Link</button>
-      </a>
+    <div class="container">
+        <h1>Access the Latest Auto-Generated UI</h1>
+        <a href="{latest_url}" target="_blank" style="text-decoration: none;">
+            <button>Visit Latest Link</button>
+        </a>
+        <div class="info">
+            <p><strong>Last Update:</strong> {last_update}</p>
+            <p><strong>Current Link:</strong> <a href="{latest_url}" target="_blank">{latest_url}</a></p>
+            <p><strong>Previous Link:</strong> <a href="{previous_url}" target="_blank">{previous_url}</a></p>
+        </div>
     </div>
-    <div class="info">
-      <p><strong>Last Update:</strong> {last_update}</p>
-      <p><strong>Current Link:</strong> <a href="{latest_url}" target="_blank">{latest_url}</a></p>
-      <p><strong>Previous Link:</strong> <a href="{previous_url}" target="_blank">{previous_url}</a></p>
-    </div>
-  </div>
-</body></html>
+</body>
+</html>
 """
 
     # Save the HTML file
