@@ -1,5 +1,6 @@
 [Auto-Generated UI](https://unaveragetech.github.io/Ngrok_url_display/)
 ---
+Docker < ollama < open webui < Ngrok <python <github 
 
 # Auto-Generated UI Deployment via GitHub Pages
 
