@@ -32,46 +32,70 @@ def update_index():
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Latest Link</title>
+    <title>Latest Auto-Generated UI</title>
     <style>
-        body {{
+        body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
             display: flex;
             flex-direction: column;
-            align-items: center;
             justify-content: center;
+            align-items: center;
             height: 100vh;
-            margin: 0;
-        }}
-        .container {{
+            color: #333;
+        }
+        .container {
             text-align: center;
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }}
-        button {{
-            padding: 10px 20px;
+            background: #ffffff;
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            width: 80%;
+            max-width: 600px;
+        }
+        h1 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+        button {
+            padding: 12px 24px;
             font-size: 16px;
-            margin-top: 20px;
-        }}
-        .info {{
+            color: #ffffff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .info {
             margin-top: 20px;
             font-size: 14px;
             color: #555;
-        }}
+        }
+        .info a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .info a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Click the button below to visit the latest link:</h1>
+        <h1>Access the Latest Auto-Generated UI</h1>
         <a href="{latest_url}" target="_blank" style="text-decoration: none;">
-            <button>Go to Latest Link</button>
+            <button>Visit Latest Link</button>
         </a>
         <div class="info">
-            <p>Last update: {last_update}</p>
-            <p>Last button link: <a href="{latest_url}" target="_blank">{latest_url}</a></p>
+            <p><strong>Last Update:</strong> {last_update}</p>
+            <p><strong>Last Link:</strong> <a href="{latest_url}" target="_blank">{latest_url}</a></p>
         </div>
     </div>
 </body>
