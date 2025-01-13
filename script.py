@@ -27,7 +27,8 @@ def update_index():
     last_update = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
     # Create the HTML content
-    html_content = f"""<!DOCTYPE html>
+    html_content = f"""
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
