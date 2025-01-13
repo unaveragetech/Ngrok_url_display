@@ -11,17 +11,18 @@ def update_index():
         print(f"{input_file} not found.")
         return
 
-    # Read the newest URL from the input file
+    # Read URLs from the input file
     with open(input_file, "r") as f:
         urls = f.readlines()
 
     # Ensure there are URLs in the file
-    if not urls:
-        print(f"No URLs found in {input_file}.")
+    if len(urls) < 2:
+        print(f"Insufficient URLs found in {input_file}.")
         return
 
-    # Get the last URL
+    # Get the last and second-last URLs
     latest_url = urls[-1].strip()
+    previous_url = urls[-2].strip()
 
     # Get the last update time
     last_update = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -33,25 +34,25 @@ def update_index():
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Stylish Auto-Generated UI</title>
 <style>
-  @keyframes gradientBG {
-    0% {background-position: 0% 50%;}
-    50% {background-position: 100% 50%;}
-    100% {background-position: 0% 50%;}
-  }
+  @keyframes gradientBG {{
+    0% {{background-position: 0% 50%;}}
+    50% {{background-position: 100% 50%;}}
+    100% {{background-position: 0% 50%;}}
+  }}
 
-  @keyframes float {
-    0% {transform: translateY(0px);}
-    50% {transform: translateY(-20px);}
-    100% {transform: translateY(0px);}
-  }
+  @keyframes float {{
+    0% {{transform: translateY(0px);}}
+    50% {{transform: translateY(-20px);}}
+    100% {{transform: translateY(0px);}}
+  }}
 
-  @keyframes pulse {
-    0% {transform: scale(1);}
-    50% {transform: scale(1.05);}
-    100% {transform: scale(1);}
-  }
+  @keyframes pulse {{
+    0% {{transform: scale(1);}}
+    50% {{transform: scale(1.05);}}
+    100% {{transform: scale(1);}}
+  }}
 
-  body {
+  body {{
     margin: 0;
     padding: 0;
     min-height: 100vh;
@@ -62,9 +63,9 @@ def update_index():
     background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
     background-size: 400% 400%;
     animation: gradientBG 15s ease infinite;
-  }
+  }}
 
-  .container {
+  .container {{
     background: rgba(255, 255, 255, 0.95);
     padding: 40px;
     border-radius: 20px;
@@ -75,9 +76,9 @@ def update_index():
     max-width: 600px;
     text-align: center;
     animation: float 6s ease-in-out infinite;
-  }
+  }}
 
-  h1 {
+  h1 {{
     color: #2c3e50;
     font-size: 2.5em;
     margin-bottom: 30px;
@@ -86,13 +87,13 @@ def update_index():
     background: linear-gradient(45deg, #12c2e9, #c471ed, #f64f59);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-  }
+  }}
 
-  .button-wrapper {
+  .button-wrapper {{
     margin: 20px 0;
-  }
+  }}
 
-  button {
+  button {{
     padding: 15px 30px;
     font-size: 18px;
     color: white;
@@ -103,46 +104,46 @@ def update_index():
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     animation: pulse 2s infinite;
-  }
+  }}
 
-  button:hover {
+  button:hover {{
     transform: translateY(-3px);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-  }
+  }}
 
-  .info {
+  .info {{
     margin-top: 30px;
     padding: 20px;
     border-top: 2px solid rgba(0, 0, 0, 0.1);
-  }
+  }}
 
-  .info p {
+  .info p {{
     margin: 10px 0;
     color: #666;
     font-size: 16px;
-  }
+  }}
 
-  .info a {
+  .info a {{
     color: #c471ed;
     text-decoration: none;
     transition: color 0.3s ease;
-  }
+  }}
 
-  .info a:hover {
+  .info a:hover {{
     color: #f64f59;
     text-decoration: underline;
-  }
+  }}
 
-  @media (max-width: 768px) {
-    .container {
+  @media (max-width: 768px) {{
+    .container {{
       width: 90%;
       padding: 20px;
-    }
+    }}
     
-    h1 {
+    h1 {{
       font-size: 1.8em;
-    }
-  }
+    }}
+  }}
 </style>
 </head>
 <body>
@@ -155,20 +156,10 @@ def update_index():
     </div>
     <div class="info">
       <p><strong>Last Update:</strong> {last_update}</p>
-      <p><strong>Last Link:</strong> <a href="{latest_url}" target="_blank">{latest_url}</a></p>
+      <p><strong>Current Link:</strong> <a href="{latest_url}" target="_blank">{latest_url}</a></p>
+      <p><strong>Previous Link:</strong> <a href="{previous_url}" target="_blank">{previous_url}</a></p>
     </div>
   </div>
-
-  <script>
-    // Add some interactive elements
-    document.querySelector('button').addEventListener('mouseover', function() {
-      this.style.transform = 'scale(1.1) translateY(-3px)';
-    });
-
-    document.querySelector('button').addEventListener('mouseout', function() {
-      this.style.transform = 'scale(1) translateY(0)';
-    });
-  </script>
 </body></html>
 """
 
@@ -177,7 +168,7 @@ def update_index():
     with open(output_file, "w") as f:
         f.write(html_content)
 
-    print(f"Updated {output_file} with the latest URL.")
+    print(f"Updated {output_file} with the latest and previous URLs.")
 
 if __name__ == "__main__":
     update_index()
