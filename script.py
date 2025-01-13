@@ -34,7 +34,7 @@ def update_index():
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Latest Auto-Generated UI</title>
     <style>
-        body {
+        body {{
             font-family: Arial, sans-serif;
             background-color: #f4f4f9;
             margin: 0;
@@ -45,8 +45,8 @@ def update_index():
             align-items: center;
             height: 100vh;
             color: #333;
-        }
-        .container {
+        }}
+        .container {{
             text-align: center;
             background: #ffffff;
             padding: 30px 40px;
@@ -54,13 +54,13 @@ def update_index():
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
             width: 80%;
             max-width: 600px;
-        }
-        h1 {
+        }}
+        h1 {{
             font-size: 1.8em;
             margin-bottom: 20px;
             color: #2c3e50;
-        }
-        button {
+        }}
+        button {{
             padding: 12px 24px;
             font-size: 16px;
             color: #ffffff;
@@ -69,22 +69,22 @@ def update_index():
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s ease;
-        }
-        button:hover {
+        }}
+        button:hover {{
             background-color: #0056b3;
-        }
-        .info {
+        }}
+        .info {{
             margin-top: 20px;
             font-size: 14px;
             color: #555;
-        }
-        .info a {
+        }}
+        .info a {{
             color: #007bff;
             text-decoration: none;
-        }
-        .info a:hover {
+        }}
+        .info a:hover {{
             text-decoration: underline;
-        }
+        }}
     </style>
 </head>
 <body>
