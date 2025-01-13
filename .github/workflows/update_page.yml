@@ -1,0 +1,35 @@
+name: Update GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - Sent_urls.txt
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.x"
+
+    - name: Install dependencies
+      run: python -m pip install --upgrade pip
+
+    - name: Run update script
+      run: python script.py
+
+    - name: Commit and push changes
+      run: |
+        git config --global user.name "GitHub Actions Bot"
+        git config --global user.email "<>"
+        git add docs/index.html
+        git commit -m "Update index.html with the latest link"
+        git push
